@@ -1,50 +1,44 @@
-import React, { Suspense, lazy, useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { PlatformLayout } from './layout/PlatformLayout';
 import { Login } from './pages/Login';
 import { Dashboard } from './pages/Dashboard';
 import { SoloMode } from './pages/SoloMode';
-import { ChallengePlaceholder } from './components/ChallengePlaceholder';
+import Challenge from '../features/challenge';
 import './styles/platform.css';
 
-// Dynamic resolver for Person B's Challenge module
-// Checks if src/features/challenge/ exists without causing Vite build errors
-const challengeModuleMap = import.meta.glob('../features/challenge/**/*.{jsx,tsx,js,ts}');
-
-const getChallengeComponent = () => {
-  const keys = Object.keys(challengeModuleMap);
-  if (keys.length === 0) {
-    return null;
-  }
-  // Look for Challenge.jsx, index.jsx, or first available module
-  const matchKey = keys.find(k => k.includes('Challenge') || k.includes('index')) || keys[0];
-  return lazy(challengeModuleMap[matchKey]);
-};
-
 const ChallengeContainer = () => {
-  const [ChallengeComponent, setChallengeComponent] = useState(null);
+  const { addScore } = useAuth();
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    const comp = getChallengeComponent();
-    if (comp) {
-      setChallengeComponent(() => comp);
+  const handleScoreUpdate = (points) => {
+    if (points > 0) {
+      addScore(points, 'SQL-001');
     }
-  }, []);
+  };
 
-  if (ChallengeComponent) {
-    return (
-      <Suspense fallback={
-        <div style={{ textAlign: 'center', padding: '60px 0', fontFamily: 'var(--font-mono)', color: 'var(--cyan-primary)' }}>
-          [INITIALIZING CHALLENGE SANDBOX ENVIRONMENT...]
-        </div>
-      }>
-        <ChallengeComponent />
-      </Suspense>
-    );
-  }
+  const handleComplete = (payload) => {
+    if (payload?.scoreAwarded > 0) {
+      addScore(payload.scoreAwarded, payload.challengeId || 'SQL-001');
+    }
+  };
 
-  return <ChallengePlaceholder />;
+  const handleReturn = (e) => {
+    if (e?.target?.textContent?.includes('Dashboard')) {
+      navigate('/dashboard');
+    } else {
+      navigate('/solo');
+    }
+  };
+
+  return (
+    <Challenge
+      onScoreUpdate={handleScoreUpdate}
+      onComplete={handleComplete}
+      onReturn={handleReturn}
+    />
+  );
 };
 
 // Route protection component
