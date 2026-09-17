@@ -1,0 +1,783 @@
+/**
+ * Aegis Range - Challenge Module Styles
+ * Isolated & Scoped with .aegis-challenge- prefix
+ */
+
+:root {
+  --aegis-ch-bg-dark: #090d16;
+  --aegis-ch-bg-card: #111827;
+  --aegis-ch-bg-card-alt: #162032;
+  --aegis-ch-bg-code: #0b111e;
+  --aegis-ch-border: #1f293d;
+  --aegis-ch-border-focus: #38bdf8;
+  --aegis-ch-text-main: #f1f5f9;
+  --aegis-ch-text-muted: #94a3b8;
+  --aegis-ch-text-dim: #64748b;
+  --aegis-ch-cyan: #38bdf8;
+  --aegis-ch-cyan-glow: rgba(56, 189, 248, 0.2);
+  --aegis-ch-emerald: #10b981;
+  --aegis-ch-emerald-bg: rgba(16, 185, 129, 0.12);
+  --aegis-ch-emerald-border: rgba(16, 185, 129, 0.35);
+  --aegis-ch-rose: #f43f5e;
+  --aegis-ch-rose-bg: rgba(244, 63, 94, 0.12);
+  --aegis-ch-rose-border: rgba(244, 63, 94, 0.35);
+  --aegis-ch-amber: #f59e0b;
+  --aegis-ch-amber-bg: rgba(245, 158, 11, 0.12);
+}
+
+/* ==========================================================================
+   Base Layout & Container
+   ========================================================================== */
+
+.aegis-challenge-page {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--aegis-ch-bg-dark);
+  color: var(--aegis-ch-text-main);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  padding: 24px 16px 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.aegis-challenge-container {
+  width: 100%;
+  max-width: 1020px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ==========================================================================
+   Challenge Top Bar & Header
+   ========================================================================== */
+
+.aegis-challenge-nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 8px 0;
+}
+
+.aegis-challenge-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 1px solid var(--aegis-ch-border);
+  color: var(--aegis-ch-text-muted);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.aegis-challenge-back-btn:hover {
+  background: var(--aegis-ch-bg-card-alt);
+  color: var(--aegis-ch-cyan);
+  border-color: var(--aegis-ch-cyan);
+}
+
+.aegis-challenge-user-score-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--aegis-ch-bg-card);
+  border: 1px solid var(--aegis-ch-border);
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+}
+
+.aegis-challenge-score-num {
+  color: var(--aegis-ch-cyan);
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   Challenge Card & Badges
+   ========================================================================== */
+
+.aegis-challenge-card {
+  background: var(--aegis-ch-bg-card);
+  border: 1px solid var(--aegis-ch-border);
+  border-radius: 12px;
+  padding: 28px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.aegis-challenge-meta-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.aegis-challenge-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.aegis-challenge-badge.category {
+  background: rgba(56, 189, 248, 0.15);
+  color: var(--aegis-ch-cyan);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+.aegis-challenge-badge.difficulty {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--aegis-ch-emerald);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.aegis-challenge-badge.points {
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--aegis-ch-amber);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.aegis-challenge-badge.id {
+  background: rgba(148, 163, 184, 0.12);
+  color: var(--aegis-ch-text-dim);
+  border: 1px solid var(--aegis-ch-border);
+}
+
+.aegis-challenge-title {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--aegis-ch-text-main);
+  letter-spacing: -0.02em;
+}
+
+.aegis-challenge-desc {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--aegis-ch-text-muted);
+}
+
+.aegis-challenge-objective-box {
+  background: var(--aegis-ch-bg-card-alt);
+  border-left: 4px solid var(--aegis-ch-cyan);
+  border-radius: 0 8px 8px 0;
+  padding: 16px 20px;
+}
+
+.aegis-challenge-objective-heading {
+  margin: 0 0 6px 0;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--aegis-ch-cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.aegis-challenge-objective-text {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--aegis-ch-text-main);
+}
+
+/* ==========================================================================
+   Simulated Lab / Interactive SQL Sandbox
+   ========================================================================== */
+
+.aegis-challenge-lab-section {
+  background: var(--aegis-ch-bg-card-alt);
+  border: 1px solid var(--aegis-ch-border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.aegis-challenge-lab-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #131c2e;
+  padding: 12px 18px;
+  border-bottom: 1px solid var(--aegis-ch-border);
+}
+
+.aegis-challenge-lab-header-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--aegis-ch-text-main);
+}
+
+.aegis-challenge-lab-status {
+  font-size: 0.75rem;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: rgba(16, 185, 129, 0.2);
+  color: var(--aegis-ch-emerald);
+  font-family: monospace;
+}
+
+.aegis-challenge-lab-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.aegis-challenge-code-snippet {
+  background: var(--aegis-ch-bg-code);
+  border: 1px solid var(--aegis-ch-border);
+  border-radius: 8px;
+  padding: 14px 18px;
+  font-family: "Fira Code", "Courier New", Courier, monospace;
+  font-size: 0.875rem;
+  color: #e2e8f0;
+  overflow-x: auto;
+}
+
+.aegis-challenge-code-label {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--aegis-ch-text-dim);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.aegis-challenge-code-highlight {
+  color: #f43f5e;
+  font-weight: 600;
+}
+
+/* Simulated Login Form */
+
+.aegis-challenge-sim-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 12px;
+  align-items: flex-end;
+}
+
+@media (max-width: 768px) {
+  .aegis-challenge-sim-form {
+    grid-template-columns: 1fr;
+  }
+}
+
+.aegis-challenge-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.aegis-challenge-field-label {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--aegis-ch-text-muted);
+}
+
+.aegis-challenge-input {
+  background: var(--aegis-ch-bg-dark);
+  border: 1px solid var(--aegis-ch-border);
+  border-radius: 6px;
+  padding: 10px 14px;
+  color: var(--aegis-ch-text-main);
+  font-size: 0.9375rem;
+  outline: none;
+  transition: border-color 0.2s;
+  font-family: monospace;
+}
+
+.aegis-challenge-input:focus {
+  border-color: var(--aegis-ch-border-focus);
+  box-shadow: 0 0 0 2px var(--aegis-ch-cyan-glow);
+}
+
+.aegis-challenge-sim-result-box {
+  margin-top: 12px;
+  background: var(--aegis-ch-bg-code);
+  border: 1px solid var(--aegis-ch-border);
+  border-radius: 8px;
+  padding: 14px;
+  font-family: monospace;
+  font-size: 0.875rem;
+}
+
+.aegis-challenge-sim-result-box.success {
+  border-color: var(--aegis-ch-emerald-border);
+  background: var(--aegis-ch-emerald-bg);
+}
+
+.aegis-challenge-sim-result-box.failure {
+  border-color: var(--aegis-ch-rose-border);
+  background: var(--aegis-ch-rose-bg);
+}
+
+.aegis-challenge-flag-discovered {
+  margin-top: 10px;
+  padding: 10px;
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px dashed var(--aegis-ch-cyan);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.aegis-challenge-flag-discovered-text {
+  font-weight: 700;
+  color: var(--aegis-ch-cyan);
+}
+
+/* ==========================================================================
+   Flag Submission Section
+   ========================================================================== */
+
+.aegis-challenge-submission-section {
+  background: var(--aegis-ch-bg-card-alt);
+  border: 1px solid var(--aegis-ch-border);
+  border-radius: 10px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.aegis-challenge-submission-title {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--aegis-ch-text-main);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.aegis-challenge-form {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+@media (max-width: 640px) {
+  .aegis-challenge-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.aegis-challenge-flag-input {
+  flex: 1;
+  background: var(--aegis-ch-bg-dark);
+  border: 1px solid var(--aegis-ch-border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  color: var(--aegis-ch-text-main);
+  font-family: monospace;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.aegis-challenge-flag-input:focus {
+  border-color: var(--aegis-ch-border-focus);
+  box-shadow: 0 0 0 3px var(--aegis-ch-cyan-glow);
+}
+
+/* Buttons */
+
+.aegis-challenge-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  white-space: nowrap;
+}
+
+.aegis-challenge-btn-primary {
+  background: #0284c7;
+  color: #ffffff;
+}
+
+.aegis-challenge-btn-primary:hover {
+  background: #0369a1;
+  box-shadow: 0 0 15px rgba(2, 132, 199, 0.4);
+}
+
+.aegis-challenge-btn-secondary {
+  background: transparent;
+  border: 1px solid var(--aegis-ch-border);
+  color: var(--aegis-ch-text-main);
+}
+
+.aegis-challenge-btn-secondary:hover {
+  background: var(--aegis-ch-bg-card-alt);
+  border-color: var(--aegis-ch-cyan);
+  color: var(--aegis-ch-cyan);
+}
+
+.aegis-challenge-btn-copy {
+  background: rgba(56, 189, 248, 0.2);
+  border: 1px solid var(--aegis-ch-cyan);
+  color: var(--aegis-ch-cyan);
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.aegis-challenge-btn-copy:hover {
+  background: var(--aegis-ch-cyan);
+  color: #0b1120;
+}
+
+/* Feedback Alerts */
+
+.aegis-challenge-alert {
+  padding: 14px 18px;
+  border-radius: 8px;
+  font-size: 0.9375rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  line-height: 1.5;
+}
+
+.aegis-challenge-alert.success {
+  background: var(--aegis-ch-emerald-bg);
+  border: 1px solid var(--aegis-ch-emerald-border);
+  color: #34d399;
+}
+
+.aegis-challenge-alert.error {
+  background: var(--aegis-ch-rose-bg);
+  border: 1px solid var(--aegis-ch-rose-border);
+  color: #fb7185;
+}
+
+/* ==========================================================================
+   Hint Component Styles
+   ========================================================================== */
+
+.aegis-challenge-hint-wrapper {
+  margin-top: 4px;
+}
+
+.aegis-challenge-hint-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  color: #fcd34d;
+  padding: 9px 16px;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.aegis-challenge-hint-btn:hover,
+.aegis-challenge-hint-btn.active {
+  background: rgba(245, 158, 11, 0.18);
+  border-color: var(--aegis-ch-amber);
+}
+
+.aegis-challenge-hint-tag {
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  background: rgba(245, 158, 11, 0.25);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.aegis-challenge-hint-body {
+  margin-top: 12px;
+  background: rgba(245, 158, 11, 0.05);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  border-radius: 8px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.aegis-challenge-hint-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.aegis-challenge-hint-badge {
+  font-size: 0.6875rem;
+  font-weight: 800;
+  background: var(--aegis-ch-amber);
+  color: #0b1120;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.aegis-challenge-hint-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fbbf24;
+}
+
+.aegis-challenge-hint-text {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: #fef3c7;
+}
+
+.aegis-challenge-hint-examples {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.aegis-challenge-hint-examples-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--aegis-ch-amber);
+  text-transform: uppercase;
+}
+
+.aegis-challenge-hint-payload-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.aegis-challenge-hint-code-tag {
+  background: var(--aegis-ch-bg-code);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  color: #fde68a;
+  font-family: monospace;
+  font-size: 0.8125rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+/* ==========================================================================
+   Challenge Result Component Styles
+   ========================================================================== */
+
+.aegis-challenge-result-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.aegis-challenge-result-card {
+  width: 100%;
+  background: var(--aegis-ch-bg-card);
+  border: 1px solid var(--aegis-ch-emerald-border);
+  border-radius: 16px;
+  padding: 36px 30px;
+  box-shadow: 0 20px 40px -15px rgba(16, 185, 129, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 24px;
+}
+
+.aegis-challenge-result-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.aegis-challenge-result-icon-glow {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--aegis-ch-emerald-bg);
+  border: 2px solid var(--aegis-ch-emerald);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  margin-bottom: 8px;
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.35);
+}
+
+.aegis-challenge-result-status-badge {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: var(--aegis-ch-emerald);
+  text-transform: uppercase;
+}
+
+.aegis-challenge-result-title {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.aegis-challenge-result-subtitle {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--aegis-ch-text-muted);
+  max-width: 580px;
+}
+
+.aegis-challenge-result-score-banner {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 600px;
+  flex-wrap: wrap;
+}
+
+.aegis-challenge-result-score-item {
+  flex: 1;
+  min-width: 140px;
+  background: var(--aegis-ch-bg-card-alt);
+  border: 1px solid var(--aegis-ch-border);
+  border-radius: 10px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.aegis-challenge-result-score-item.primary {
+  border-color: var(--aegis-ch-emerald-border);
+  background: var(--aegis-ch-emerald-bg);
+}
+
+.aegis-challenge-result-score-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--aegis-ch-text-dim);
+  font-weight: 600;
+}
+
+.aegis-challenge-result-score-val {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--aegis-ch-text-main);
+}
+
+.aegis-challenge-result-score-item.primary .aegis-challenge-result-score-val {
+  color: var(--aegis-ch-emerald);
+}
+
+.aegis-challenge-result-details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  width: 100%;
+  max-width: 600px;
+  text-align: left;
+}
+
+@media (max-width: 520px) {
+  .aegis-challenge-result-details-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.aegis-challenge-result-detail-box {
+  background: var(--aegis-ch-bg-dark);
+  border: 1px solid var(--aegis-ch-border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.aegis-challenge-result-detail-box.full-width {
+  grid-column: 1 / -1;
+}
+
+.aegis-challenge-result-detail-label {
+  font-size: 0.6875rem;
+  color: var(--aegis-ch-text-dim);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.aegis-challenge-result-detail-value {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--aegis-ch-text-main);
+}
+
+.aegis-challenge-result-flag-code {
+  font-family: monospace;
+  font-size: 0.9375rem;
+  color: var(--aegis-ch-cyan);
+  word-break: break-all;
+}
+
+.aegis-challenge-result-takeaway {
+  width: 100%;
+  max-width: 600px;
+  background: rgba(56, 189, 248, 0.05);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: 8px;
+  padding: 16px;
+  text-align: left;
+}
+
+.aegis-challenge-takeaway-title {
+  margin: 0 0 6px 0;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--aegis-ch-cyan);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.aegis-challenge-takeaway-text {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--aegis-ch-text-muted);
+}
+
+.aegis-challenge-result-actions {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 8px;
+}
